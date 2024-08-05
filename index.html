@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Grafik Oluşturucu</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+<h1>Grafik Oluşturucu</h1>
+<div class="input-section">
+<input type="text" id="chartTitle" placeholder="Grafik Başlığı">
+<div id="inputContainer">
+<div class="input-group" id="xInputGroup">
+<h3>X Değerleri</h3>
+<div class="value-input">
+<input type="text" placeholder="X Değeri">
+<button class="add-btn" onclick="addInput('x')">+</button>
+<button class="remove-btn" onclick="removeInput('x')" style="display:none;">-</button>
+</div>
+</div>
+<div class="input-group" id="yInputGroup">
+<h3>Y Değerleri</h3>
+<div class="value-input">
+<input type="text" placeholder="Y Değeri">
+<input type="color" value="#4BC0C0" class="color-picker">
+<button class="add-btn" onclick="addInput('y')">+</button>
+<button class="remove-btn" onclick="removeInput('y')" style="display:none;">-</button>
+</div>
+</div>
+</div>
+</div>
+<div class="options-section">
+<select id="chartType">
+<option value="bar">Çubuk Grafik</option>
+<option value="line">Çizgi Grafik</option>
+<option value="scatter">Dağılım Grafiği</option>
+<option value="pie">Pasta Grafik</option>
+<option value="doughnut">Halka Grafik</option>
+<option value="polarArea">Polar Alan Grafik</option>
+<option value="spider">Örümcek Grafiği</option>
+<option value="area">Alan Grafiği</option>
+</select>
+<div id="chartOptions" style="display:none;">
+<div id="barOptions" style="display:none;">
+<label for="barThickness">Çubuk Kalınlığı:</label>
+<input type="range" id="barThickness" min="1" max="100" value="20">
+<span id="barThicknessValue">%20</span>
+</div>
+<div id="scatterOptions" style="display:none;">
+<label for="xAxisMin">X Ekseni Minimum:</label>
+<input type="number" id="xAxisMin" value="0">
+<label for="xAxisMax">X Ekseni Maksimum:</label>
+<input type="number" id="xAxisMax" value="100">
+</div>
+<div>
+<label for="yAxisMin">Y Ekseni Minimum:</label>
+<input type="number" id="yAxisMin" value="0">
+<label for="yAxisMax">Y Ekseni Maksimum:</label>
+<input type="number" id="yAxisMax" value="100">
+</div>
+</div>
+</div>
+<div class="action-buttons">
+<select id="saveFormat">
+<option value="png">PNG</option>
+<option value="svg">SVG</option>
+<option value="csv">CSV</option>
+</select>
+<button onclick="saveChart()">Grafiği Kaydet</button>
+<button onclick="resetChart()">Sıfırla</button>
+</div>
+<div id="chartContainer">
+<div class="chart-buttons">
+<button class="chart-button" onclick="zoomIn()">+</button>
+<button class="chart-button" onclick="zoomOut()">-</button>
+<button class="chart-button" onclick="resetZoom()">🔍</button>
+<button class="chart-button" onclick="toggleFullscreen()">⛶</button>
+<button class="chart-button" onclick="exportChart()">⬇️</button>
+</div>
+<canvas id="myChart"></canvas>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="script.js"></script>
+</body>
+</html>
